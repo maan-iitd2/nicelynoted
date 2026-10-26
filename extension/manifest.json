@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "NicelyNoted",
+  "version": "0.1.0",
+  "description": "Free meeting notes for Google Meet: records the call locally, then sends the transcript to ChatGPT for notes and tasks.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxc2veaBLOoRUGLpqJugrP/guI6Vos3nIbhghbAt/gxnUoYyKCmw36YktHAf35Z6Jk+OBR6VHsGUPqbOeHyVnqg0t9DmdZBk02qR1YNbJ7Ih9ZYlQrHwqNnVgghC8c57BYmDVmhB60hUwO1MK7zL56h3ZslcZ8U5LJEXi+bsbF8fBUb3lrL6cr5xdahcI6uIGACFeD2otIZJ+XF+Ize1yWm0Yr6i/rnxae5xI0Eadk1UesWGO4oZUXn69OrAGFQCKzdWo8rZPG1Q5AWshvljcvXe8c6X/svBMHPABWAAZHnlSUwpW967LbUpKlKEWfx26wdTbLgUk5pLIDh1x5ewcxQIDAQAB",
+  "permissions": [
+    "nativeMessaging",
+    "storage",
+    "tabs"
+  ],
+  "icons": {
+    "16": "icon-16.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  },
+  "action": {
+    "default_title": "NicelyNoted",
+    "default_icon": {
+      "16": "icon-16.png",
+      "48": "icon-48.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*"
+      ],
+      "js": [
+        "chatgpt.js"
+      ]
+    }
+  ]
+}
